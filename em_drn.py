@@ -1,9 +1,8 @@
-from sdrn import sDRN
 from deepART import deepART
 from DRN import DRN
 from SDRN import sDRN
 import numpy as np
-from old_recipe_data import wv
+from data_fasttext import new_ft_dict
 
 
 class EM_DRN(object):
@@ -29,9 +28,9 @@ class EM_DRN(object):
         for i in range(X.shape[0]):
             naturalLang = ""
             for j in range(X[i].shape[0]):
-                for k in range(len(wv)):
-                    if np.sum(abs(X[i][j] - np.array(wv[list(wv)[k]]))) < 1e-6:
-                        naturalLang = naturalLang + list(wv)[k] + " "
+                for k in range(len(new_ft_dict)):
+                    if np.sum(abs(X[i][j] - np.array(new_ft_dict[list(new_ft_dict)[k]]))) < 1e-6:
+                        naturalLang = naturalLang + list(new_ft_dict)[k] + " "
             print(name, ": ", naturalLang)
         print(" ")
 
@@ -62,9 +61,9 @@ class EM_DRN_recipe(object):
         for i in range(X.shape[0]):
             naturalLang = ""
             for j in range(X[i].shape[0]):
-                for k in range(len(wv)):
-                    if np.sum(abs(X[i][j] - np.array(wv[list(wv)[k]]))) < 1e-6:
-                        naturalLang = naturalLang + list(wv)[k] + " "
+                for k in range(len(new_ft_dict)):
+                    if np.sum(abs(X[i][j] - np.array(new_ft_dict[list(new_ft_dict)[k]]))) < 1e-6:
+                        naturalLang = naturalLang + list(new_ft_dict)[k] + " "
             print(name, ": ", naturalLang)
         print(" ")
 
@@ -76,7 +75,9 @@ class EM_sDRN(object):
 
     def train(self, X):
         Y = self.sdrn.train(X)
+        # print("output of sdrn: {}".format(Y))
         Y = self.deepArt.train(Y)
+        # print("output of deep art: {}".format(Y))
         return Y
 
     def test(self, X):
@@ -90,9 +91,9 @@ class EM_sDRN(object):
         for i in range(X.shape[0]):
             naturalLang = ""
             for j in range(X[i].shape[0]):
-                for k in range(len(wv)):
-                    if np.sum(abs(X[i][j] - np.array(wv[list(wv)[k]]))) < 1e-6:
-                        naturalLang = naturalLang + list(wv)[k] + " "
+                for k in range(len(new_ft_dict)):
+                    if np.sum(abs(X[i][j] - np.array(new_ft_dict[list(new_ft_dict)[k]]))) < 1e-6:
+                        naturalLang = naturalLang + list(new_ft_dict)[k] + " "
             print(name, ": ", naturalLang)
         print(" ")
 
@@ -117,17 +118,20 @@ class EM_sDRN_recipe(object):
         return Y
 
     def readout(self, Y, name):
+        recipe = []
         YY = self.deepArt2.readout(Y)
         YY = self.deepArt1.readout(YY)
         X = self.sdrn.readout(YY)
         for i in range(X.shape[0]):
             naturalLang = ""
             for j in range(X[i].shape[0]):
-                for k in range(len(wv)):
-                    if np.sum(abs(X[i][j] - np.array(wv[list(wv)[k]]))) < 1e-6:
-                        naturalLang = naturalLang + list(wv)[k] + " "
+                for k in range(len(new_ft_dict)):
+                    if np.sum(abs(X[i][j] - np.array(new_ft_dict[list(new_ft_dict)[k]]))) < 1e-6:
+                        naturalLang = naturalLang + list(new_ft_dict)[k] + " "
             print(name, ": ", naturalLang)
+            recipe.append(naturalLang)
         print(" ")
+        return recipe
 
 
 if __name__ == '__main__':

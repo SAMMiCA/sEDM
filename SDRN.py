@@ -38,16 +38,12 @@ class sDRN(object):
                 distance = self._distance_between_clusters(self.w[cluster], self.w[idx])
                 dist_glob = np.array([np.linalg.norm(np.extract(self.wg[self.dim:], self.wg[:self.dim]))])
                 sum = np.sum(IoV)
-                # a = all(IoV > self.iov)
                 a = IoV > self.iov
                 b = sum > max_iov
-                # c = all(distance < np.multiply(self.dist, dist_glob))
                 c = distance < np.multiply(self.dist, dist_glob)
-                # d = all(IoV > self.iov / 2)
                 d = IoV > self.iov / 2
                 temp_cluster = self._union_of_clusters(self.w[idx], self.w[cluster])
                 cluster_size_check = self._check_cluster_size_vig(temp_cluster)
-                # e = all(cluster_size_check)
                 e = cluster_size_check
 
                 if (((a and b) or c) and d) and e:
@@ -84,7 +80,6 @@ class sDRN(object):
         For each channel of input, we caculate the distance between front half and back half.
         Then, return calculate all the distances
         """
-        # front, back = self._split_weight_nch(weight)
         front, back = weight[:weight.shape[0] // 2], weight[weight.shape[0] // 2:]
         return np.prod(np.subtract(back, front), axis=0)
 
@@ -92,8 +87,6 @@ class sDRN(object):
         """
         Return the unioned area of given inputs w_i and w_j.
         """
-        # front_i, back_i = self._split_weight_nch(w_i)
-        # front_j, back_j = self._split_weight_nch(w_j)
         front_i, back_i = w_i[:w_i.shape[0] // 2], w_i[w_i.shape[0] // 2:]
         front_j, back_j = w_j[:w_j.shape[0] // 2], w_j[w_j.shape[0] // 2:]
         u_front, u_back = np.minimum(front_i, front_j), np.maximum(back_i, back_j)
@@ -115,8 +108,6 @@ class sDRN(object):
         """
         Calculate the distance between given clusters w_i and w_j.
         """
-        # front_i, back_i = self._split_weight_nch(w_i)
-        # front_j, back_j = self._split_weight_nch(w_j)
         front_i, back_i = w_i[:w_i.shape[0] // 2], w_i[w_i.shape[0] // 2:]
         front_j, back_j = w_j[:w_j.shape[0] // 2], w_j[w_j.shape[0] // 2:]
         size_i, size_j = np.linalg.norm(np.subtract(back_i, front_i)) / 2, np.linalg.norm(np.subtract(back_j, front_j)) / 2
@@ -138,7 +129,6 @@ class sDRN(object):
         """
         Calculate the flag to whether proceed grouping process or not.
         """
-        # dist_glob = np.array([np.linalg.norm(np.subtract(self.wg[len(self.wg)//2:], self.wg[:len(self.wg)//2]))])
         dist_glob = np.array([np.linalg.norm(np.subtract(self.wg[self.dim:], self.wg[:self.dim]))])
         condition = self._distance_between_cluster_and_point(weight, sample) < self.dist * dist_glob
         return np.array(condition)
@@ -147,7 +137,6 @@ class sDRN(object):
         self.X = point
         self.dim = self.X.shape[0]
         self.updateWg(self.X)
-        # self.activateNN()
         self.activateNN_sdrn()
         nu_index, all_index = self.code_comp()
         # resonance check
@@ -157,35 +146,20 @@ class sDRN(object):
         else:
             for i in range(self.n_category):
                 resonanceIdx = all_index[i]
-                # print("all_index: {}".format(all_index))
-                # print("resonanceIdx {}".format(resonanceIdx))
-                # print("weight shape {}".format(self.w.shape))
                 condition = self.resonance(self.w[resonanceIdx])
                 learn_cond = self._learning_condition(point, self.w[resonanceIdx])
                 if condition and learn_cond:
                     break
         if condition and learn_cond:   # condition 추가
-            # category = resonanceIdx
             self.w[resonanceIdx] = self.updateNN(point, self.w[resonanceIdx], self.lr)
         else:
             self.n_category += 1
             self.Y.append(1)
-            # print("Y length: {}".format(len(self.Y)))
-            # self.Y = np.array(self.Y)
-            # self.w = np.atleast_2d([np.hstack((self.X, self.X))])
             if self.w is None:
-                # self.w.append(np.append(self.X, self.X))
                 self.w = np.atleast_2d([np.hstack((self.X, self.X))])
-                # self.w = np.array(self.w)
             else:
                 self.w = np.vstack((self.w, np.hstack((self.X, self.X))))
-                # print("weight shape: {}".format(self.w.shape))
-                # np.append(self.w, np.append(self.X, self.X))
-            # nu_index.append(self.n_category)
-            # nu_index = np.array(nu_index)
             nu_index = np.append(nu_index, self.n_category-1)     # np.append(nu_index, self.n_category)
-        # if self.n_category > 1:
-        #     self.add_group(nu_index, condition, resonanceIdx)
         if condition and learn_cond:
             self._grouping(resonanceIdx)
         else:
@@ -206,7 +180,6 @@ class sDRN(object):
                     self.group = np.array([self.group])
                 else:
                     self.group = np.vstack((self.group, np.append(T, index[i])))
-        # self.group = np.array(self.group)
 
         if condition == True:
             for j in range(self.group.shape[0]):
@@ -308,13 +281,11 @@ class sDRN(object):
         activation = np.zeros((iter))
         for i in range(iter):
             activation[i] = self.group[i, 0]
-        # sort_index = np.argsort(-1 * activation)
         sort_index = np.array(activation).argsort()[::-1]
 
         # Check resonance of multi_w
         delete_index = []
         for i in range(iter):
-            # Group two target weights
             target_weight = self.group[sort_index[i], 1:3]
             if target_weight[0] == target_weight[1]:
                 continue
@@ -333,10 +304,8 @@ class sDRN(object):
                         ind = int(np.where(self.group[j,1:3] == max(target_weight))[0])
                         self.group[j,ind+1] = min(target_weight)
                 delete_index.append(max(target_weight))     # Save the substituted node number
-        # delete_index = np.array(delete_index)
         # Remove all redundant nodes
         self.n_category = self.n_category - len(delete_index)
-        # delete_index = np.argsort(-1 * delete_index)
         delete_index = np.array(delete_index).argsort()[::-1]
         for i in range(delete_index.size):
             self.Y.pop(delete_index[i])
@@ -356,7 +325,6 @@ class sDRN(object):
                     else:
                         if not any(np.array(delete_group) == j):
                             delete_group.append(j)
-        # delete_group = np.argsort(-1 * delete_group)
         delete_group = np.array(delete_group).argsort()[::-1]
         for i in range(delete_group.size):
             self.group = np.delete(self.group, delete_group[i], axis=0)
@@ -388,18 +356,12 @@ class sDRN(object):
         dataNum = X.shape[0]
         Y = [[] for _ in range(dataNum)]
         for i in range(dataNum):
-            yy = []
             for j in range(np.array(X[i]).shape[0]):
                 self.X = np.array(X[i][j])
                 self.activateNN_sdrn()
                 ind = np.argmax(self.Y)
-                # self.Y = [0 if i != ind else x for i,x in enumerate(self.Y)]
                 YY = [0 if i != ind else x for i, x in enumerate(self.Y)]
-                # self.Y=YY
-                # yy.append(YY)
-                temp = YY
                 Y[i].append(YY)
-        # self.Y = temp
         return Y
 
     def readout(self, Y):
@@ -408,24 +370,13 @@ class sDRN(object):
         for i in range(Y.shape[0]):
             for j in range(Y[i].shape[0]):
                 ind = np.argmax(Y[i][j])
-                # if len(X) == 0:
                 if i == 0 and j == 0:
-                    # X.append(np.array([self.w[ind][:self.w.shape[1]//2]]))      # X.append(np.array(self.w[ind][:self.w.shape[1] // 2]))
                     X.append([self.w[ind][:self.w.shape[1] // 2]])
-                    # X = np.array(X)
                 else:
-                    # X = np.array([np.vstack((X[i], [self.w[ind][:self.w.shape[1]//2]]))])
-                    # X = list(X)
                     X.append([self.w[ind][:self.w.shape[1]//2]])
-                    # X = np.array(X)
             if i + 1 < Y.shape[0]:
                 XX.append(np.array(X).squeeze(1))
                 X = []
-                # X = np.array([X])
-                # X = list(X)
-                # X = list(X)
-                # X.append([])
-                # X = np.array(X)
         XX.append(np.array(X).squeeze(1))
         XXX = np.array(XX)
         return XXX
@@ -441,13 +392,7 @@ if __name__ == '__main__':
     #               np.array([[-0.0152,-0.0120],[0.0062,0.0617]])])
     x = np.array([np.array([[-0.0213, -0.0578], [-0.0213, -0.0578], [-0.0897, -0.1516]]),
                   np.array([[-0.0973,-0.0610],[ -0.0161,-0.0583]])])
-    model = DRN()
+    model = sDRN()
     model.train(x)
     Y = model.testDRN(x)
     print(Y)
-    # deepart = deepart()
-    # deepart.train(Y)
-    # A=np.array([[0, 2, 3, 4, 5, 6]])
-    # B=np.array([[0, 2, 3]])
-    # C=np.array([[4, 5, 6]])
-    # D=np.append(A, )

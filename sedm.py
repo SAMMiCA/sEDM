@@ -1,13 +1,7 @@
-# import data
 from em_drn import EM_DRN, EM_DRN_recipe, EM_sDRN, EM_sDRN_recipe
 from edmap import EDMAP
 import numpy as np
 
-# total_ingre_list = []
-#
-# for i in range(12):
-#     menu, ingre, recipe = data(i)
-#     total_ingre_list.append(ingre)
 
 class EDM(object):
     def __init__(self):
@@ -26,7 +20,6 @@ class EDM(object):
         Xn = np.array(Xn)
         label = Y1[0]
         self.edmap.train(Xn, label)
-        # print("debug")
 
     def test(self, cue):
         if cue.shape[0] == 1:
@@ -63,23 +56,35 @@ class sEDM(object):
         Xn = np.array(Xn)
         label = Y1[0]
         self.edmap.train(Xn, label)
-        # print("debug")
 
     def test(self, cue):
+        if type(cue) == list:
+            cue = np.array(cue)
         if cue.shape[0] == 1:
-            Y2 = self.em_sdrn2.test(cue[0])
-            Xn = np.array([np.sum(Y2, axis=0)])
+            ##### if input in only menu (order)
+            Y1 = self.em_sdrn1.test(cue)
+            if Y1.shape[0] == 1:
+                Xn = np.array([np.sum(Y1, axis=1)])
+            else:
+                Xn = np.array([np.sum(Y1, axis=0)])
+            
+            ##### if input is only ingredients (objects)
+            # Y2 = self.em_sdrn2.test(cue)
+            # if Y2.shape[0] == 1:
+            #     Xn = np.array([np.sum(Y2, axis=1)])
+            # else:
+            #     Xn = np.array([np.sum(Y2, axis=0)])
             label = []
         else:
             Y1 = self.em_sdrn1.test(cue[0])
             Y2 = self.em_sdrn2.test(cue[1])
-            Xn = np.sum(Y2[0])
-            label = Y1[0]
+            Xn = np.array([np.sum([Y2][0], axis=0)])
+            label = Y1
 
         pred_Y1, pred_Y3 = self.edmap.test(Xn, label)
         count=0
         for i in range(pred_Y1.shape[0]):
             count+=1
             self.em_sdrn1.readout(pred_Y1[i], "food_type")
-            self.em_sdrn3.readout(pred_Y3[i], "recipe")
-        return count
+            recipe = self.em_sdrn3.readout(pred_Y3[i], "recipe")
+        return recipe

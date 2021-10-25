@@ -39,17 +39,10 @@ class DRN(object):
         else:
             self.n_category += 1
             self.Y.append(1)
-            # self.Y = np.array(self.Y)
-            # self.w = np.atleast_2d([np.hstack((self.X, self.X))])
             if self.w is None:
-                # self.w.append(np.append(self.X, self.X))
                 self.w = np.atleast_2d([np.hstack((self.X, self.X))])
-                # self.w = np.array(self.w)
             else:
                 self.w = np.vstack((self.w, np.hstack((self.X, self.X))))
-                # np.append(self.w, np.append(self.X, self.X))
-            # nu_index.append(self.n_category)
-            # nu_index = np.array(nu_index)
             nu_index = np.append(nu_index, self.n_category-1)     # np.append(nu_index, self.n_category)
         if self.n_category > 1:
             self.add_group(nu_index, condition, resonanceIdx)
@@ -69,7 +62,6 @@ class DRN(object):
                     self.group = np.array([self.group])
                 else:
                     self.group = np.vstack((self.group, np.append(T, index[i])))
-        # self.group = np.array(self.group)
 
         if condition == True:
             for j in range(self.group.shape[0]):
@@ -165,7 +157,6 @@ class DRN(object):
         activation = np.zeros((iter))
         for i in range(iter):
             activation[i] = self.group[i, 0]
-        # sort_index = np.argsort(-1 * activation)
         sort_index = np.array(activation).argsort()[::-1]
 
         # Check resonance of multi_w
@@ -190,10 +181,8 @@ class DRN(object):
                         ind = int(np.where(self.group[j,1:3] == max(target_weight))[0])
                         self.group[j,ind+1] = min(target_weight)
                 delete_index.append(max(target_weight))     # Save the substituted node number
-        # delete_index = np.array(delete_index)
         # Remove all redundant nodes
         self.n_category = self.n_category - len(delete_index)
-        # delete_index = np.argsort(-1 * delete_index)
         delete_index = np.array(delete_index).argsort()[::-1]
         for i in range(delete_index.size):
             self.Y.pop(delete_index[i])
@@ -213,7 +202,6 @@ class DRN(object):
                     else:
                         if not any(np.array(delete_group) == j):
                             delete_group.append(j)
-        # delete_group = np.argsort(-1 * delete_group)
         delete_group = np.array(delete_group).argsort()[::-1]
         for i in range(delete_group.size):
             self.group = np.delete(self.group, delete_group[i], axis=0)
@@ -241,22 +229,15 @@ class DRN(object):
 
     def testDRN(self, X):
         X = np.array(X)
-        temp = None
         dataNum = X.shape[0]
         Y = [[] for _ in range(dataNum)]
         for i in range(dataNum):
-            yy = []
             for j in range(np.array(X[i]).shape[0]):
                 self.X = np.array(X[i][j])
                 self.activateNN()
                 ind = np.argmax(self.Y)
-                # self.Y = [0 if i != ind else x for i,x in enumerate(self.Y)]
                 YY = [0 if i != ind else x for i, x in enumerate(self.Y)]
-                # self.Y=YY
-                # yy.append(YY)
-                temp = YY
                 Y[i].append(YY)
-        # self.Y = temp
         return Y
 
     def readout(self, Y):
@@ -265,24 +246,13 @@ class DRN(object):
         for i in range(Y.shape[0]):
             for j in range(Y[i].shape[0]):
                 ind = np.argmax(Y[i][j])
-                # if len(X) == 0:
                 if i == 0 and j == 0:
-                    # X.append(np.array([self.w[ind][:self.w.shape[1]//2]]))      # X.append(np.array(self.w[ind][:self.w.shape[1] // 2]))
                     X.append([self.w[ind][:self.w.shape[1] // 2]])
-                    # X = np.array(X)
                 else:
-                    # X = np.array([np.vstack((X[i], [self.w[ind][:self.w.shape[1]//2]]))])
-                    # X = list(X)
                     X.append([self.w[ind][:self.w.shape[1]//2]])
-                    # X = np.array(X)
             if i + 1 < Y.shape[0]:
                 XX.append(np.array(X).squeeze(1))
                 X = []
-                # X = np.array([X])
-                # X = list(X)
-                # X = list(X)
-                # X.append([])
-                # X = np.array(X)
         XX.append(np.array(X).squeeze(1))
         XXX = np.array(XX)
         return XXX
@@ -302,9 +272,3 @@ if __name__ == '__main__':
     model.train(x)
     Y = model.testDRN(x)
     print(Y)
-    # deepart = deepart()
-    # deepart.train(Y)
-    # A=np.array([[0, 2, 3, 4, 5, 6]])
-    # B=np.array([[0, 2, 3]])
-    # C=np.array([[4, 5, 6]])
-    # D=np.append(A, )
