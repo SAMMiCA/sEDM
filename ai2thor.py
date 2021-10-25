@@ -88,8 +88,8 @@ data_dict_train = {'instructions1' : {
 'instructions8' : {
     'goals': ['put fork on dining table'],   
     'objects': ['fork',
-                'dining table',
-                'openable drawer'],
+                'openable drawer',
+                'dining table'],
     'instructions': ['navigate to drawer',
                      'open the drawer',
                      'pick up the fork',
@@ -99,10 +99,10 @@ data_dict_train = {'instructions1' : {
 },
 
 'instructions9' : {
-    'goals': ['put fork on dining table'],   
+    'goals': ['put fork on dining table'],
     'objects': ['fork',
-                'dining table',
-                'countertop'],
+                'countertop',
+                'dining table'],
     'instructions': ['navigate to countertop',
                      'pick up the fork',
                      'navigate to the dining table',
@@ -110,7 +110,7 @@ data_dict_train = {'instructions1' : {
 },
 
 'instructions10' : {
-    'goals': ['put potato in fridge'],   
+    'goals': ['put potato in fridge'],
     'objects': ['potato',
                 'countertop',
                 'openable fridge'],
@@ -123,7 +123,7 @@ data_dict_train = {'instructions1' : {
 },
 
 'instructions11' : {
-    'goals': ['put potato in fridge'],   
+    'goals': ['put potato in fridge'],
     'objects': ['potato',
                 'openable microwave',
                 'openable fridge'],
@@ -138,7 +138,7 @@ data_dict_train = {'instructions1' : {
 },
 
 'instructions12' : {
-    'goals': ['put potato on plate'],   
+    'goals': ['put potato on plate'],
     'objects': ['potato',
                 'openable fridge',
                 'plate'],
@@ -151,7 +151,7 @@ data_dict_train = {'instructions1' : {
 },
 
 'instructions13' : {
-    'goals': ['put potato on plate'],   
+    'goals': ['put potato on plate'],
     'objects': ['potato',
                 'sink',
                 'plate'],
@@ -162,7 +162,7 @@ data_dict_train = {'instructions1' : {
 },
 
 'instructions14' : {
-    'goals': ['put bottle in fridge'],   
+    'goals': ['put bottle in fridge'],
     'objects': ['bottle',
                 'countertop',
                 'openable fridge'],
@@ -175,7 +175,7 @@ data_dict_train = {'instructions1' : {
 },
 
 'instructions15' : {
-    'goals': ['put bottle in fridge'],   
+    'goals': ['put bottle in fridge'],
     'objects': ['bottle',
                 'openable cabinet',
                 'openable fridge'],
@@ -190,7 +190,7 @@ data_dict_train = {'instructions1' : {
 },
 
 'instructions16' : {
-    'goals': ['put cup in cabinet'],  
+    'goals': ['put cup in cabinet'],
     'objects': ['cup',
                 'sink basin',
                 'openable cabinet'],
@@ -203,7 +203,7 @@ data_dict_train = {'instructions1' : {
 },
 
 'instructions17' : {
-    'goals': ['put cup in cabinet'],  
+    'goals': ['put cup in cabinet'],
     'objects': ['cup',
                 'openable fridge',
                 'openable cabinet'],
@@ -216,7 +216,7 @@ data_dict_train = {'instructions1' : {
 },
 
 'instructions18' : {
-    'goals': ['put cup on dining table'],  
+    'goals': ['put cup on dining table'],
     'objects': ['cup',
                 'openable microwave',
                 'dining table'],
@@ -229,7 +229,7 @@ data_dict_train = {'instructions1' : {
 },
 
 'instructions19' : {
-    'goals': ['put cup on dining table'],  
+    'goals': ['put cup on dining table'],
     'objects': ['cup',
                 'shelf',
                 'dining table'],
@@ -240,10 +240,10 @@ data_dict_train = {'instructions1' : {
 },
 
 'instructions20' : {
-    'goals': ['put spatula on countertop'],  
+    'goals': ['put spatula on countertop'],
     'objects': ['spatula',
-                'countertop',
-                'openable drawer'],
+                'openable drawer',
+                'countertop'],
     'instructions': ['navigate to drawer',
                      'open the drawer',
                      'pick up the spatula',
@@ -253,7 +253,7 @@ data_dict_train = {'instructions1' : {
 },
 
 'instructions21' : {
-    'goals': ['put spatula on countertop'],  
+    'goals': ['put spatula on countertop'],
     'objects': ['spatula',
                 'sink',
                 'countertop'],
@@ -278,7 +278,7 @@ data_dict_train = {'instructions1' : {
 
 
 'instructions23' : {
-    'goals': ['put spray bottle on shelf'],  
+    'goals': ['put spray bottle on shelf'],
     'objects': ['spray bottle',
                 'dining table',
                 'shelf'],
@@ -289,7 +289,7 @@ data_dict_train = {'instructions1' : {
 },
 
 'instructions24' : {
-    'goals': ['put spray bottle on shelf'],  
+    'goals': ['put spray bottle on shelf'],
     'objects': ['spray bottle',
                 'openable drawer',
                 'shelf'],
@@ -302,7 +302,7 @@ data_dict_train = {'instructions1' : {
 },
 
 'instructions25' : {
-    'goals': ['put spray bottle in cabinet'],  
+    'goals': ['put spray bottle in cabinet'],
     'objects': ['spray bottle',
                 'countertop',
                 'openable cabinet'],
@@ -315,7 +315,7 @@ data_dict_train = {'instructions1' : {
 },
 
 'instructions26' : {
-    'goals': ['put newspaper on shelf'],  
+    'goals': ['put newspaper on shelf'],
     'objects': ['newspaper',
                 'sofa',
                 'shelf'],
@@ -326,7 +326,7 @@ data_dict_train = {'instructions1' : {
 },
 
 'instructions27' : {
-    'goals': ['put newspaper on shelf'],  
+    'goals': ['put newspaper on shelf'],
     'objects': ['newspaper',
                 'openable cabinet',
                 'shelf'],
@@ -339,7 +339,7 @@ data_dict_train = {'instructions1' : {
 },
 
 'instructions28' : {
-    'goals': ['put teddy bear on bed'],  
+    'goals': ['put teddy bear on bed'],
     'objects': ['teddy bear',
                 'coffee table',
                 'bed'],
@@ -350,7 +350,7 @@ data_dict_train = {'instructions1' : {
 },
 
 'instructions29' : {
-    'goals': ['put teddy bear on bed'],  
+    'goals': ['put teddy bear on bed'],
     'objects': ['teddy bear',
                 'openable safe',
                 'bed'],
@@ -364,7 +364,7 @@ data_dict_train = {'instructions1' : {
 
 
 'instructions30' : {
-    'goals': ['put cellphone in dresser'],  
+    'goals': ['put cellphone in dresser'],
     'objects': ['cellphone',
                 'tv stand',
                 'dresser'],
@@ -376,7 +376,7 @@ data_dict_train = {'instructions1' : {
 },
 
 'instructions31' : {
-    'goals': ['put cellphone on desk'],  
+    'goals': ['put cellphone on desk'],
     'objects': ['cellphone',
                 'openable drawer',
                 'desk'],
@@ -390,7 +390,7 @@ data_dict_train = {'instructions1' : {
 },
 
 'instructions32' : {
-    'goals': ['put cellphone on desk'],  
+    'goals': ['put cellphone on desk'],
     'objects': ['cellphone',
                 'ottoman',
                 'desk'],
@@ -402,7 +402,7 @@ data_dict_train = {'instructions1' : {
 },
 
 'instructions33' : {
-    'goals': ['Put pencil in drawer'],  
+    'goals': ['Put pencil in drawer'],
     'objects': ['pencil',
                 'coffee table',
                 'openable drawer'],
@@ -415,10 +415,10 @@ data_dict_train = {'instructions1' : {
 },
 
 'instructions34' : {
-    'goals': ['Put pencil in mug'],  
+    'goals': ['Put pencil in mug'],
     'objects': ['pencil',
-                'mug',
-                'openable drawer'],
+                'openable drawer',
+                'mug'],
     'instructions': ['navigate to the drawer',
                      'open the drawer',
                      'pick up the pencil',
@@ -428,10 +428,10 @@ data_dict_train = {'instructions1' : {
 },
 
 'instructions35' : {
-    'goals': ['Put pencil in mug'],  
+    'goals': ['Put pencil in mug'],
     'objects': ['pencil',
-                'mug',
-                'tv stand'],
+                'tv stand',
+                'mug'],
     'instructions': ['navigate to the tv stand',
                      'pick up the pencil',
                      'navigate to the mug',
@@ -439,7 +439,7 @@ data_dict_train = {'instructions1' : {
 },
 
 'instructions36' : {
-    'goals': ['Put vase in box'],  
+    'goals': ['Put vase in box'],
     'objects': ['vase',
                 'desk',
                 'openable box'],
@@ -452,10 +452,10 @@ data_dict_train = {'instructions1' : {
 },
 
 'instructions37' : {
-    'goals': ['Put vase on desk'],  
+    'goals': ['Put vase on desk'],
     'objects': ['vase',
-                'desk',
-                'openable box'],
+                'openable box',
+                'desk'],
     'instructions': ['navigate to the box',
                      'open the box',
                      'pick up the vase',
@@ -465,10 +465,10 @@ data_dict_train = {'instructions1' : {
 },
 
 'instructions38' : {
-    'goals': ['Put vase on desk'],  
+    'goals': ['Put vase on desk'],
     'objects': ['vase',
-                'desk',
-                'cart'],
+                'cart',
+                'desk'],
     'instructions': ['navigate to the cart',
                      'pick up the vase',
                      'navigate to the desk',
@@ -476,10 +476,10 @@ data_dict_train = {'instructions1' : {
 },
 
 'instructions39' : {
-    'goals': ['Put soap bar in sink'],  
+    'goals': ['Put soap bar in sink'],
     'objects': ['soap bar',
-                'sink',
-                'cart'],
+                'cart',
+                'sink'],
     'instructions': ['navigate to the cart',
                      'pick up the soap bar',
                      'navigate to the sink',
@@ -487,10 +487,10 @@ data_dict_train = {'instructions1' : {
 },
 
 'instructions40' : {
-    'goals': ['Put soap bar in sink'],  
+    'goals': ['Put soap bar in sink'],
     'objects': ['soap bar',
-                'sink',
-                'openable cabinet'],
+                'openable cabinet',
+                'sink'],
     'instructions': ['navigate to the cabinet',
                      'open the cabinet',
                      'pick up the soap bar',
@@ -500,10 +500,10 @@ data_dict_train = {'instructions1' : {
 },
 
 'instructions41' : {
-    'goals': ['Put soap bar in cabinet'],  
+    'goals': ['Put soap bar in cabinet'],
     'objects': ['soap bar',
-                'openable cabinet',
-                'shelf'],
+                'shelf',
+                'openable cabinet'],
     'instructions': ['navigate to the shelf',
                      'pick up the soap bar',
                      'navigate to the cabinet',
@@ -550,7 +550,7 @@ data_dict_train = {'instructions1' : {
 },
 
 'instructions45' : {
-    'goals': ['Put tissue box in cabinet'],  
+    'goals': ['Put tissue box in cabinet'],
     'objects': ['tissue box',
                 'box',
                 'openable cabinet'],
@@ -565,8 +565,8 @@ data_dict_train = {'instructions1' : {
 'instructions46' : {
     'goals': ['Put tissue box on side table'],
     'objects': ['tissue box',
-                'side table',
-                'openable cabinet'],
+                'openable cabinet',
+                'side table'],
     'instructions': ['navigate to the cabinet',
                      'open the cabinet',
                      'pick up the tissue box',
@@ -578,8 +578,8 @@ data_dict_train = {'instructions1' : {
 'instructions47' : {
     'goals': ['Put tissue box on side table'],
     'objects': ['tissue box',
-                'side table',
-                'shelf'],
+                'shelf',
+                'side table'],
     'instructions': ['navigate to the shelf',
                      'pick up the tissue box',
                      'navigate to the side table',
@@ -633,7 +633,7 @@ data_dict_train = {'instructions1' : {
 },
 
 'instructions54' : {
-    'goals': ['slice the tomato'],  
+    'goals': ['slice the tomato'],
     'objects': ['tomato',
                 'openable fridge'],
     'instructions': ['navigate to the fridge',
@@ -645,7 +645,7 @@ data_dict_train = {'instructions1' : {
 },
 
 'instructions55' : {
-    'goals': ['slice the tomato'],  
+    'goals': ['slice the tomato'],
     'objects': ['tomato',
                 'countertop'],
     'instructions': ['navigate to the countertop',
@@ -654,7 +654,7 @@ data_dict_train = {'instructions1' : {
 },
 
 'instructions56' : {
-    'goals': ['slice the potato'],  
+    'goals': ['slice the potato'],
     'objects': ['potato',
                 'openable microwave'],
     'instructions': ['navigate to the microwave',
@@ -666,7 +666,7 @@ data_dict_train = {'instructions1' : {
 },
 
 'instructions57' : {
-    'goals': ['slice the potato'],  
+    'goals': ['slice the potato'],
     'objects': ['potato',
                 'sink'],
     'instructions': ['navigate to the sink',
@@ -676,7 +676,7 @@ data_dict_train = {'instructions1' : {
 },
 
 'instructions58' : {
-    'goals': ['bring me a cup'],  
+    'goals': ['bring me a cup'],
     'objects': ['cup',
                 'openable cabinet'],
     'instructions': ['navigate to the cabinet',
@@ -687,7 +687,7 @@ data_dict_train = {'instructions1' : {
 },
 
 'instructions59' : {
-    'goals': ['bring me a cup'],  
+    'goals': ['bring me a cup'],
     'objects': ['cup',
                 'dining table'],
     'instructions': ['navigate to the dining table',
@@ -696,7 +696,7 @@ data_dict_train = {'instructions1' : {
 },
 
 'instructions60' : {
-    'goals': ['bring me a plate'],  
+    'goals': ['bring me a plate'],
     'objects': ['plate',
                 'openable microwave'],
     'instructions': ['navigate to the microwave',
@@ -707,7 +707,7 @@ data_dict_train = {'instructions1' : {
 },
 
 'instructions61' : {
-    'goals': ['bring me a plate'],  
+    'goals': ['bring me a plate'],
     'objects': ['plate',
                 'side table'],
     'instructions': ['navigate to the side table',
@@ -716,7 +716,7 @@ data_dict_train = {'instructions1' : {
 },
 
 'instructions62' : {
-    'goals': ['bring me a fork'],  
+    'goals': ['bring me a fork'],
     'objects': ['fork',
                 'openable drawer'],
     'instructions': ['navigate to the drawer',
@@ -727,7 +727,7 @@ data_dict_train = {'instructions1' : {
 },
 
 'instructions63' : {
-    'goals': ['bring me a fork'],  
+    'goals': ['bring me a fork'],
     'objects': ['fork',
                 'coffee table'],
     'instructions': ['navigate to the coffee table',
@@ -737,7 +737,7 @@ data_dict_train = {'instructions1' : {
 }
 
 data_dict_test = {'instructions1' : {
-    'goals': ['Put kettle in sink'],   
+    'goals': ['Put kettle in sink'],
     'objects': ['kettle',
                 'countertop',
                 'sink'],
@@ -776,8 +776,8 @@ data_dict_test = {'instructions1' : {
 'instructions2_2' : {
     'goals': ['put fork on dining table'],
     'objects': ['fork',
-                'dining table',
-                'side table'],
+                'side table',
+                'dining table'],
     'instructions': ['navigate to drawer',
                      'open the drawer',
                      'pick up the fork',
@@ -789,8 +789,8 @@ data_dict_test = {'instructions1' : {
 'instructions3' : {
     'goals': ['Put lettuce on plate'],
     'objects': ['lettuce',
-                'plate',
-                'openable fridge'],
+                'openable fridge',
+                'plate'],
     'instructions': ['navigate to lettuce',
                      'pick up the lettuce',
                      'navigate to fridge',
@@ -813,7 +813,7 @@ data_dict_test = {'instructions1' : {
 },
 
 'instructions4' : {
-    'goals': ['Put wine bottle in fridge'],   
+    'goals': ['Put wine bottle in fridge'],
     'objects': ['wine bottle',
                 'countertop',
                 'openable fridge'],
@@ -839,7 +839,7 @@ data_dict_test = {'instructions1' : {
 },
 
 'instructions5' : {
-    'goals': ['Put mug in cabinet'],   
+    'goals': ['Put mug in cabinet'],
     'objects': ['mug',
                 'sink basin',
                 'openable cabinet'],
@@ -903,7 +903,7 @@ data_dict_test = {'instructions1' : {
     'goals': ['put spatula on countertop'],
     'objects': ['spatula',
                 'pan',
-                'openable drawer'],
+                'countertop'],
     'instructions': ['navigate to drawer',
                      'open the drawer',
                      'pick up the spatula',
@@ -937,7 +937,7 @@ data_dict_test = {'instructions1' : {
 },
 
 'instructions9' : {
-    'goals': ['Put book on shelf'],  
+    'goals': ['Put book on shelf'],
     'objects': ['book',
                 'sofa',
                 'shelf'],
@@ -959,7 +959,7 @@ data_dict_test = {'instructions1' : {
 },
 
 'instructions10' : {
-    'goals': ['Put pillow on bed'],  
+    'goals': ['Put pillow on bed'],
     'objects': ['pillow',
                 'coffee table',
                 'bed'],
@@ -981,7 +981,7 @@ data_dict_test = {'instructions1' : {
 },
 
 'instructions11' : {
-    'goals': ['Put laptop in dresser'],  
+    'goals': ['Put laptop in dresser'],
     'objects': ['laptop',
                 'tv stand',
                 'dresser'],
@@ -1021,8 +1021,8 @@ data_dict_test = {'instructions1' : {
 'instructions12_2' : {
     'goals': ['Put pencil in mug'],
     'objects': ['pencil',
-                'mug',
-                'desk'],
+                'desk',
+                'mug'],
     'instructions': ['navigate to the drawer',
                      'open the drawer',
                      'pick up the pencil',
@@ -1032,7 +1032,7 @@ data_dict_test = {'instructions1' : {
 },
 
 'instructions13' : {
-    'goals': ['Put watch in box'],  
+    'goals': ['Put watch in box'],
     'objects': ['watch',
                 'desk',
                 'openable box'],
@@ -1047,8 +1047,8 @@ data_dict_test = {'instructions1' : {
 'instructions13_2' : {
     'goals': ['Put vase on desk'],
     'objects': ['vase',
-                'desk',
-                'shelf'],
+                'shelf',
+                'desk'],
     'instructions': ['navigate to the box',
                      'open the box',
                      'pick up the vase',
@@ -1060,8 +1060,8 @@ data_dict_test = {'instructions1' : {
 'instructions14' : {
     'goals': ['Put soap bottle in sink'],
     'objects': ['soap bottle',
-                'sink',
-                'cart'],
+                'cart',
+                'sink'],
     'instructions': ['navigate to the soap bottle',
                      'pick up the soap bottle',
                      'navigate to the cart',
@@ -1071,8 +1071,8 @@ data_dict_test = {'instructions1' : {
 'instructions14_2' : {
     'goals': ['Put soap bar in sink'],
     'objects': ['soap bar',
-                'sink',
-                'openable drawer'],
+                'openable drawer',
+                'sink'],
     'instructions': ['navigate to the cabinet',
                      'open the cabinet',
                      'pick up the soap bar',
@@ -1082,7 +1082,7 @@ data_dict_test = {'instructions1' : {
 },
 
 'instructions15' : {
-    'goals': ['Put toilet paper in cabinet'],  
+    'goals': ['Put toilet paper in cabinet'],
     'objects': ['toilet paper',
                 'box',
                 'openable cabinet'],
@@ -1097,8 +1097,8 @@ data_dict_test = {'instructions1' : {
 'instructions15_2' : {
     'goals': ['Put tissue box on side table'],
     'objects': ['tissue box',
-                'side table',
-                'openable drawer'],
+                'openable drawer',
+                'side table'],
     'instructions': ['navigate to the cabinet',
                      'open the cabinet',
                      'pick up the tissue box',
@@ -1115,7 +1115,7 @@ data_dict_test = {'instructions1' : {
 },
 
 'instructions17' : {
-    'goals': ['slice the lettuce'],  
+    'goals': ['slice the lettuce'],
     'objects': ['lettuce',
                 'openable fridge'],
     'instructions': ['navigate to the fridge',
@@ -1139,7 +1139,7 @@ data_dict_test = {'instructions1' : {
 },
 
 'instructions18' : {
-    'goals': ['bring me a mug'],  
+    'goals': ['bring me a mug'],
     'objects': ['mug',
                 'openable cabinet'],
     'instructions': ['navigate to the cabinet',
@@ -1161,8 +1161,8 @@ data_dict_test = {'instructions1' : {
 },
 
 'instructions19' : {
-    'goals': ['bring me a bowl'],  
-    'objects': ['plate',
+    'goals': ['bring me a bowl'],
+    'objects': ['bowl',
                 'openable microwave'],
     'instructions': ['navigate to the microwave',
                      'open the microwave',
@@ -1183,7 +1183,7 @@ data_dict_test = {'instructions1' : {
 },
 
 'instructions20' : {
-    'goals': ['bring me a spoon'],  
+    'goals': ['bring me a spoon'],
     'objects': ['spoon',
                 'openable drawer'],
     'instructions': ['navigate to the drawer',
@@ -1205,7 +1205,7 @@ data_dict_test = {'instructions1' : {
 },
 
 'instructions21' : {
-    'goals': ['put plate in cabinet'],  
+    'goals': ['put plate in cabinet'],
     'objects': ['plate',
                 'sink basin',
                 'openable cabinet'],
@@ -1233,8 +1233,8 @@ data_dict_test = {'instructions1' : {
 'instructions23' : {
     'goals': ['Put alarm clock on desk'],
     'objects': ['alarm clock',
-                'desk',
-                'openable box'],
+                'openable box',
+                'desk'],
     'instructions': ['navigate to the watch',
                      'pick up the watch',
                      'navigate to the box',

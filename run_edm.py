@@ -62,39 +62,19 @@ for pair in pair_cos:
     object_wv = []
     object_wv_entire = []
     test_order = pair[1]
-    for k, v in two_word_dict.items():
-        if k in test_order:
-            test_order_new = test_order.replace(k, v)
-            test_replace = True
     train_order = pair[2]
-    for k, v in two_word_dict.items():
-        if k in train_order:
-            train_order_new = train_order.replace(k, v)
-            train_replace = True
     test_obj = pair[3]
     train_obj = pair[4]
-    if test_replace:
-        if train_replace:
-            test_kw = [x for x in test_order_new.split(" ") if x not in train_order_new.split(" ")]
-        else:
-            test_kw = [x for x in test_order_new.split(" ") if x not in train_order.split(" ")]
+    test_obj = [ob.replace('openable ', '') if 'openable' in ob else ob for ob in test_obj]
+    train_obj = [ob.replace('openable ', '') if 'openable' in ob else ob for ob in train_obj]
+    print("Test order: {}\n".format(test_order))
+    # print("Train order: {}".format(train_order))
+    if len(test_obj) == len(train_obj):
+        diff_test_tr = [(i, j) for i, j in zip(test_obj, train_obj) if i != j]
     else:
-        if train_replace:
-            test_kw = [x for x in test_order.split(" ") if x not in train_order_new.split(" ")]
-        else:
-            test_kw = [x for x in test_order.split(" ") if x not in train_order.split(" ")]
-    if train_replace:
-        if test_replace:
-            train_kw = [x for x in train_order_new.split(" ") if x not in test_order_new.split(" ")]
-        else:
-            train_kw = [x for x in train_order_new.split(" ") if x not in test_order.split(" ")]
-    else:
-        if test_replace:
-            train_kw = [x for x in train_order.split(" ") if x not in test_order_new.split(" ")]
-        else:
-            train_kw = [x for x in train_order.split(" ") if x not in test_order.split(" ")]
-    print("Test order: {}".format(test_order))
-    print("Train order: {}".format(train_order))
+        print("***sequence cannot be retrieved***")
+        print("\n\n")
+        continue
     for w in train_order.split(" "):
         w = re.sub('[\W_]+', '', w.lower())
         wvec = new_ft_dict[w]
@@ -110,8 +90,16 @@ for pair in pair_cos:
         object_wv = []
     sequence = model.test([goal_wv_entire, object_wv_entire])
     # print(sequence)
-    final_seq = replace_kw(test_kw, train_kw, sequence)
+    final_seq = []
+    for seq in sequence:
+        for kw in diff_test_tr:
+            if kw[1] in seq:
+                seq=seq.replace(kw[1], kw[0])
+        final_seq.append(seq)
     print("Test Sequence: ")
-    print(final_seq)
+    for s in final_seq:
+        print(s)
+    print("\n\n")
+
 
 

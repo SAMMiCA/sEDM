@@ -75,9 +75,7 @@ class EM_sDRN(object):
 
     def train(self, X):
         Y = self.sdrn.train(X)
-        # print("output of sdrn: {}".format(Y))
         Y = self.deepArt.train(Y)
-        # print("output of deep art: {}".format(Y))
         return Y
 
     def test(self, X):
@@ -94,8 +92,8 @@ class EM_sDRN(object):
                 for k in range(len(new_ft_dict)):
                     if np.sum(abs(X[i][j] - np.array(new_ft_dict[list(new_ft_dict)[k]]))) < 1e-6:
                         naturalLang = naturalLang + list(new_ft_dict)[k] + " "
-            print(name, ": ", naturalLang)
-        print(" ")
+            # print(name, ": ", naturalLang)
+        # print(" ")
 
 
 class EM_sDRN_recipe(object):
@@ -128,9 +126,9 @@ class EM_sDRN_recipe(object):
                 for k in range(len(new_ft_dict)):
                     if np.sum(abs(X[i][j] - np.array(new_ft_dict[list(new_ft_dict)[k]]))) < 1e-6:
                         naturalLang = naturalLang + list(new_ft_dict)[k] + " "
-            print(name, ": ", naturalLang)
+            # print(name, ": ", naturalLang)
             recipe.append(naturalLang)
-        print(" ")
+        # print(" ")
         return recipe
 
 
