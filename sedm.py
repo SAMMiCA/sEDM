@@ -1,7 +1,7 @@
 from em_drn import EM_DRN, EM_DRN_recipe, EM_sDRN, EM_sDRN_recipe
 from edmap import EDMAP
 import numpy as np
-
+import pickle
 
 class EDM(object):
     def __init__(self):
@@ -88,3 +88,23 @@ class sEDM(object):
             self.em_sdrn1.readout(pred_Y1[i], "food_type")
             recipe = self.em_sdrn3.readout(pred_Y3[i], "recipe")
         return recipe
+
+    def save(self, filename):
+        data = {
+            'em_sdrn1': self.em_sdrn1, # menu
+            'em_sdrn2': self.em_sdrn2, # ingredient
+            'em_sdrn3': self.em_sdrn3, # recipe
+            'edmap': self.edmap
+        }
+
+        with open(filename, 'wb') as f:
+            pickle.dump(data, f, pickle.DEFAULT_PROTOCOL)
+
+    def load(self, filename):
+        with open(filename, 'rb') as f:
+            data = pickle.load(f)
+        self.em_sdrn1 = data['em_sdrn1']  # menu
+        self.em_sdrn2 = data['em_sdrn2']  # ingredient
+        self.em_sdrn3 = data['em_sdrn3']  # recipe
+        self.edmap = data['edmap']
+        del data

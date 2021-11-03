@@ -123,7 +123,10 @@ class EDMAP(object):
         for i in range(start, fin):
             for j in range(self.numCell[i]):
                 half1 = self.w[i][j][0].shape[0]//2
-                T = np.sum(fuzzy_and(X[0], self.w[i][j][0][:half1])) / np.sum(self.w[i][j][0][:half1])
+                if np.sum(self.w[i][j][0][:half1]) != 0:
+                    T = np.sum(fuzzy_and(X[0], self.w[i][j][0][:half1])) / np.sum(self.w[i][j][0][:half1])
+                else:
+                    T = (np.sum(fuzzy_and(X[0], self.w[i][j][0][:half1])) + 1) / (np.sum(self.w[i][j][0][:half1]) + 1)
                 # T_tmp[i][j] = T
                 if T >= self.rho:
                     pY1 = np.zeros((1, self.label.size))

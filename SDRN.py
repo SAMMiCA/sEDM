@@ -358,6 +358,7 @@ class sDRN(object):
         for i in range(dataNum):
             for j in range(np.array(X[i]).shape[0]):
                 self.X = np.array(X[i][j])
+                # self.dim = self.X.shape[0]
                 self.activateNN_sdrn()
                 ind = np.argmax(self.Y)
                 YY = [0 if i != ind else x for i, x in enumerate(self.Y)]
