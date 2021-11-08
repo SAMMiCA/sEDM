@@ -1,7 +1,10 @@
 import re
+import pickle
 from sedm import EDM, sEDM
 from data_fasttext import new_ft_dict
-from ai2thor import data_dict_train
+
+train_file = open("train_data.pkl", "rb")
+data_dict_train = pickle.load(train_file)
 
 # model = EDM()
 model = sEDM()
@@ -16,9 +19,9 @@ for i, (k, v) in enumerate(data_dict_train.items()):
     print(i)
     # if i == 6:
     #     break
-    goals = v['goals']
+    goals = v['goal']
     objects = v['objects']
-    instr = v['instructions']
+    instr = v['instruction']
     for g in goals:
         go = g.split(" ")
         for w in go:
@@ -46,7 +49,7 @@ for i, (k, v) in enumerate(data_dict_train.items()):
     model.train(goal_wv_entire, object_wv_entire, instr_wv_entire)
 
 print("done training")
-model.save(filename="data.pickle")
+model.save(filename="weight.pickle")
 
 
 

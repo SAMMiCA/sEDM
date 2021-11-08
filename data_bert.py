@@ -1,9 +1,13 @@
+import pickle
 import torch
 from transformers import BertTokenizer, BertModel
-from ai2thor import data_dict_train, data_dict_test
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.metrics.pairwise import euclidean_distances
 
+train_file = open("train_data.pkl", "rb")
+test_file = open("test_data.pkl", "rb")
+data_dict_train = pickle.load(train_file)
+data_dict_test = pickle.load(test_file)
 
 tokenizer = BertTokenizer.from_pretrained("bert-base-uncased")
 model = BertModel.from_pretrained('bert-base-uncased',
@@ -35,7 +39,7 @@ two_word_dict = {'apple sliced': 'AppleSliced',
 
 def dataload_train(v):
     input_ids_objects = []
-    goals = v["goals"][0].lower()
+    goals = v["goal"][0].lower()
     objects = v["objects"][:]
 
     encoded_goals = tokenizer.encode_plus(text=goals,  # the sentence to be encoded
@@ -65,7 +69,7 @@ def dataload_train(v):
     return (goals, goals_emb), (objects, objects_emb)
 
 def dataload_test(v):
-    goals = v["goals"][0].lower()
+    goals = v["goal"][0].lower()
     objects = v["objects"][:]
     input_ids_objects = []
     encoded_goals = tokenizer.encode_plus(text=goals,  # the sentence to be encoded

@@ -5,8 +5,13 @@ from sklearn.manifold import TSNE
 from sklearn.preprocessing import StandardScaler
 
 import re
+import pickle
 import numpy as np
-from ai2thor import data_dict_train, data_dict_test
+
+train_file = open("train_data.pkl", "rb")
+test_file = open("test_data.pkl", "rb")
+data_dict_train = pickle.load(train_file)
+data_dict_test = pickle.load(test_file)
 
 vectors = FastText()
 
@@ -14,9 +19,9 @@ vectors = FastText()
 def build_ft_dict():
     ft_dict = {}
     for v_tr in data_dict_train.values():
-        goals = v_tr["goals"][0]
+        goals = v_tr["goal"][0]
         objects = v_tr["objects"][:]
-        instructions = v_tr["instructions"][:]
+        instructions = v_tr["instruction"][:]
         # print(goals)
         # print(objects)
         # print(instructions)
@@ -42,7 +47,7 @@ def build_ft_dict():
                     ft_dict[i_w] = ft
 
     for v_te in data_dict_test.values():
-        goals_te = v_te["goals"][0]
+        goals_te = v_te["goal"][0]
         for g_w in goals_te.split(" "):
             g_w = g_w.lower()
             g_w = re.sub('[\W_]+', '', g_w)
