@@ -5,7 +5,7 @@ from data_bert import match_most_similar
 
 # model = EDM()
 model = sEDM()
-model.load(filename="weight.pickle")
+model.load(filename="weight_unique.pickle")
 pair_cos = match_most_similar(metric="cosine")
 for pair in pair_cos:
     goal_wv = []

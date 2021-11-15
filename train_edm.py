@@ -3,7 +3,7 @@ import pickle
 from sedm import EDM, sEDM
 from data_fasttext import new_ft_dict
 
-train_file = open("train_data.pkl", "rb")
+train_file = open("train_unique_data.pkl", "rb")
 data_dict_train = pickle.load(train_file)
 
 # model = EDM()
@@ -49,7 +49,7 @@ for i, (k, v) in enumerate(data_dict_train.items()):
     model.train(goal_wv_entire, object_wv_entire, instr_wv_entire)
 
 print("done training")
-model.save(filename="weight.pickle")
+model.save(filename="weight_unique.pickle")
 
 
 

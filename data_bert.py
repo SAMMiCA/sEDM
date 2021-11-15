@@ -4,8 +4,8 @@ from transformers import BertTokenizer, BertModel
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.metrics.pairwise import euclidean_distances
 
-train_file = open("train_data.pkl", "rb")
-test_file = open("test_data.pkl", "rb")
+train_file = open("train_unique_data.pkl", "rb")
+test_file = open("test_unique_data.pkl", "rb")
 data_dict_train = pickle.load(train_file)
 data_dict_test = pickle.load(test_file)
 
