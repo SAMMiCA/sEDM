@@ -16,13 +16,13 @@ with open('data.csv') as csv_file:
             obj_recep = row[4].split(",")
             if len(goal_obj) > 1:
                 for obj in goal_obj:
-                    goal = "move {} to {}".format(obj, goal_location[0])
+                    goal = "pick {} place {}".format(obj, goal_location[0])
                     if goal in unique_goals:
                         continue
                     else:
                         data["data{}".format(data_num)] = {}
-                        data["data{}".format(data_num)]['goal'] = ["move {} to {}".format(obj, goal_location[0])]
-                        data["data{}".format(data_num)]['objects'] = [obj, obj_recep[0], goal_location[0]]
+                        data["data{}".format(data_num)]['goal'] = ["pick {} place {}".format(obj, goal_location[0])]
+                        data["data{}".format(data_num)]['objects'] = [obj, goal_location[0]]
                         data["data{}".format(data_num)]['instruction'] = ["navigate to {}".format(obj),
                                                                           "pick up the {}".format(obj),
                                                                           "navigate to {}".format(goal_location[0]),
@@ -30,13 +30,13 @@ with open('data.csv') as csv_file:
                         data_num += 1
                         unique_goals.append(goal)
             else:
-                goal = "move {} to {}".format(goal_obj[0], goal_location[0])
+                goal = "pick {} place {}".format(goal_obj[0], goal_location[0])
                 if goal in unique_goals:
                     continue
                 else:
                     data["data{}".format(data_num)] = {}
-                    data["data{}".format(data_num)]['goal'] = ["move {} to {}".format(goal_obj[0], goal_location[0])]
-                    data["data{}".format(data_num)]['objects'] = [goal_obj[0], obj_recep[0], goal_location[0]]
+                    data["data{}".format(data_num)]['goal'] = ["pick {} place {}".format(goal_obj[0], goal_location[0])]
+                    data["data{}".format(data_num)]['objects'] = [goal_obj[0], goal_location[0]]
                     data["data{}".format(data_num)]['instruction'] = ["navigate to {}".format(goal_obj[0]),
                                                                       "pick up the {}".format(goal_obj[0]),
                                                                       "navigate to {}".format(goal_location[0]),
